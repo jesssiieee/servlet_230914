@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/lesson01/ex03")
 public class GetMethodEx03 extends HttpServlet{
 	
+	// add commet
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		response.setCharacterEncoding("utf-8");
