@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.annotation.WebServlet;
@@ -20,6 +21,7 @@ public class GetMethodQuiz08 extends HttpServlet {
 		response.setContentType("text/html");
 
 		PrintWriter out = response.getWriter();
+		String keyword = request.getParameter("keyword");
 		
 		List<String> list = new ArrayList<>(Arrays.asList(
 		        "강남역 최고 맛집 소개 합니다.", 
@@ -31,16 +33,23 @@ public class GetMethodQuiz08 extends HttpServlet {
 		
 		out.print("<html><head><title>검색 결과</title></head><body>");
 		
-		String[] arrList = new String[list.size()];
-		String name = request.getParameter("search");
-		
-		for(int i = 0; i< list.size(); i++) {
-			arrList[i] = list.get(i);
-			if (arrList[i].contains(name)) {
-				out.print(arrList[i] + "<br>");
-				for(int j = 0; j < arrList[i].length(); j++) {
-				}
+		Iterator<String> iter = list.iterator();
+		while (iter.hasNext()) {
+			String line = iter.next();
+			
+			
+			// 1)
+//			if (line.contains(keyword)) {
+//				String[] word = line.split(keyword);
+//				out.print(word[0] + "<b>" + keyword + "</b>" + word[1] + "<br>");
+//			}
+			// 2)
+			if (line.contains(keyword)) {
+				line = line.replace(keyword, "<b>" + keyword + "</b>");
+				out.print(line + "<br>");
 			}
+			
+			
 		}
 		
 		out.print("</body></html>");
