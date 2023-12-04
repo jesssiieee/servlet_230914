@@ -3,39 +3,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>길이 변환 결과</title>
+    <meta charset="UTF-8">
+    <title>길이 변환 결과</title>
 </head>
 <body>
 
-	<%
-		int cm = Integer.parseInt(request.getParameter("cm"));
-		String[] unitArr = request.getParameterValues("unit");
-	%>
+<%
+    int cm = Integer.parseInt(request.getParameter("cm"));
+    String[] unitArr = request.getParameterValues("unit");
 
-	<div class="container">
-		<h1>길이 변환 결과</h1>
-		<%
-			if (unitArr != null) {
-				double answer = 0;
-				for(int i = 0; i < unitArr.length; i++) {
-					if (unitArr[i].equals("inch")) {
-						answer = (double) cm / 2.54;
-						out.print(answer);
-					} else if (unitArr[i].equals("yard")) {
-						answer = (double) cm / 91.44;
-						out.print(answer);
-					} else if (unitArr[i].equals("feet")) {
-						answer = (double) cm / 30.48;
-						out.print(answer);
-					} else if (unitArr[i].equals("meter")) {
-						answer = (double) cm / 100.0;
-						out.print(answer);
-					}
-					 
-				}
-			}
-		%>
-	</div>
+    %>
+    <div class="container">
+        <h1>길이 변환 결과</h1>
+        <h3><%= cm %>cm</h3>
+        <hr>
+
+        <%
+            if (unitArr != null) {
+                for (String unit : unitArr) {
+                    double answer = 0;
+                    String unitName = "";
+
+                    if (unit.equals("inch")) {
+                        answer = (double) cm / 2.54;
+                        unitName = "in";
+                    } else if (unit.equals("yard")) {
+                        answer = (double) cm / 91.44;
+                        unitName = "yd";
+                    } else if (unit.equals("feet")) {
+                        answer = (double) cm / 30.48;
+                        unitName = "ft";
+                    } else if (unit.equals("meter")) {
+                        answer = (double) cm / 100.0;
+                        unitName = "m";
+                    }
+
+                    %>
+                    <h3><%= answer %> <%= unitName %></h3>
+                    <%
+                }
+            }
+        %>
+    </div>
+
 </body>
 </html>
