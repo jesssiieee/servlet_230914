@@ -31,7 +31,6 @@
 	    
 	    String menu = request.getParameter("menu");
 	    String point = request.getParameter("point");
-		out.print(point);
 	%>
 	
 	<div class="contaner">
@@ -45,31 +44,16 @@
 			
 			<% 
 				for(Map<String, Object> strMap : list) {
+					if (strMap.get("menu").equals(menu)) {
+					
 			%>
 				<tr class="text-center">
-					<td>
-						<%
-							if (strMap.get("menu").equals(menu)) {
-								out.print(strMap.get("menu"));
-							}
-						%>
-					</td>
-					<td>
-						<%
-							if (strMap.get("menu").equals(menu)) {
-								out.print(strMap.get("name"));
-							}
-						%>
-					</td>
-					<td>
-						<%
-							if (strMap.get("menu").equals(menu)) {
-								out.print(strMap.get("point"));
-							}
-						%>
-					</td>
+					<td><%= strMap.get("menu") %></td>
+					<td><%= strMap.get("name") %></td>
+					<td><%= strMap.get("point") %></td>
 				</tr>
 			<%
+					}
 				}
 			%>
 			

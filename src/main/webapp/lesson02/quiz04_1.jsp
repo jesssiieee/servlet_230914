@@ -8,10 +8,9 @@
 </head>
 <body>
 
-<%
-    int cm = Integer.parseInt(request.getParameter("cm"));
-    String[] unitArr = request.getParameterValues("unit");
-
+	<%
+	    int cm = Integer.parseInt(request.getParameter("cm"));
+	    String[] unitArr = request.getParameterValues("unit");
     %>
     <div class="container">
         <h1>길이 변환 결과</h1>
@@ -39,7 +38,7 @@
                     }
 
                     %>
-                    <h3><%= answer %> <%= unitName %></h3>
+                    <h2><%= answer %> <%= unitName %></h2>
                     <%
                 }
             }
