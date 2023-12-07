@@ -31,6 +31,7 @@
 	    
 	    String menu = request.getParameter("menu");
 	    String point = request.getParameter("point");
+	    boolean exclude = point != null;
 	%>
 	
 	<div class="contaner">
@@ -45,7 +46,11 @@
 			<% 
 				for(Map<String, Object> strMap : list) {
 					if (strMap.get("menu").equals(menu)) {
-					
+						// skip 조건 : 체크가 되어있고 스킵 되어야하는 조건이면 continue로 넘김
+						if (exclude && (double)strMap.get("point") <= 4) {
+							continue; // 아래 코드 수행하지 않고 skip
+						}
+						
 			%>
 				<tr class="text-center">
 					<td><%= strMap.get("menu") %></td>
