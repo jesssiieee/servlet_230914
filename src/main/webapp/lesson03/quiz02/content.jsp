@@ -91,11 +91,10 @@
 		
 			// 1. 목록에서 클릭한 경우 (id 값)
 		
-			out.print(request.getParameter("id"));
+			int id = Integer.parseInt(request.getParameter("id"));
 			if (request.getParameter("id") != null) {
-				int id = Integer.parseInt(request.getParameter("id"));
 				for(Map<String, Object> music : musicList) {
-					if (musicInfo.get("id").equals(id)) {
+					if (music.get("id").equals(id)) {
 						target = music;
 						break;
 					}
@@ -113,11 +112,9 @@
 					}
 				}
 			}
-			out.print(target);
 			
 		%>
-		
-	<%--	
+			
 	<div class="mr-4">
 		<img src="<%= target.get("thumbnail") %>" alt="앨범 이미지" width="150">
 	</div>
@@ -141,8 +138,7 @@
 		</div>
 	</div>
 </div>
- --%>
-	
+
 <%-- 가사 영역 --%>
 <h4>가사</h4>
 <hr>
