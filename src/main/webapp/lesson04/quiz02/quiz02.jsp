@@ -12,17 +12,17 @@
 </head>
 <body>
 	<div class="container">
-		<h3>즐겨찾기 추가</h1>
+		<h3>즐겨찾기 추가</h3>
 		<form method="post" action="/lesson04/quiz02_insert">
 			<div class="">
 				<div>사이트명: </div>
-				<input type="text" name="name">
+				<input type="text" class="form-control" name="name">
 			</div> 
 			<div class="">
 				<div>사이트 주소: </div>
-				<textarea rows="1" cols="50" name="url"></textarea>
+				<input type="text" class="form-control" name="url">
 			</div>
-			<button type="submit" class="btn btn-success">추가</button>
+			<button type="submit" class="btn btn-success mt-3">추가</button>
 		</form>
 	</div>
 </body>
